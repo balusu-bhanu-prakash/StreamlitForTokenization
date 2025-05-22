@@ -1,0 +1,9 @@
+This project tries to create an end to end pipeline having English text as input and provides/returns the tokens in the given input as output, this is done using the TreebankWordTokenizer [from nltk.tokenize import TreebankWordTokenizer]
+
+Procedure to run/execute:
+1. Actiivate the virtual environment venv
+2. Install requirements: pip install -r requirements.txt
+3. All codes already setup, test using: pytest test_tokenizer.py -v
+4. Run the flask app: python app.py
+5. Run the streamlit UI app: streamlit run streamlit_app.py
+[Note as flask app handles the appi requests, its important to run it before streamlit app]
