@@ -1,19 +1,14 @@
 import streamlit as st
-import requests
+from tokenizer import tokenize_text  # Direct import
 
-st.title("Treebank Tokenizer Demo (Flask + Streamlit)")
+st.title("Text Tokenization App")
 
-user_input = st.text_area("Enter text to tokenize")
+user_input = st.text_area("Enter your text here:")
 
 if st.button("Tokenize"):
-    response = requests.post(
-        "http://localhost:5000/tokenize", json={"text": user_input}
-    )
-    if response.status_code == 200:
-        tokens = response.json()["tokens"]
-        st.write("### Tokens:")
+    if user_input.strip():
+        tokens = tokenize_text(user_input)
         st.markdown(f"**Tokens:** {' || '.join(tokens)}")
-        st.write(tokens)
-
+        st.write(tokens)  # Output without indices
     else:
-        st.error("Failed to reach tokenizer API")
+        st.warning("Please enter some text.")
